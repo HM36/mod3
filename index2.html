@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moments-cafe</title>
+    <link rel="stylesheet" href="css/index2.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+        body{
+            min-height: 100vh;
+            background: #FED8B1;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .header{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.3rem 10%;
+            display: flex;
+            justify-content: center;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .header::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, .1);
+            backdrop-filter: blur(4px);
+            z-index: -1;
+        }
+
+        .header img{
+            height: 100px;
+            width: 100px;
+            background-position: center;
+        }
+        .logo{
+            font-size: 2rem;
+            color: aliceblue;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header h1{
+            color: #6F4E37;
+            margin-left: 0;
+            margin-right: 60px;
+            text-transform: uppercase;
+        }
+
+        .navbar a{
+            font-size: 1.15rem;
+            color: #A67B5B  ;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 2.5rem;
+        
+        }
+
+        #check{
+            display: none;
+        }
+
+        .icons{
+            position: absolute;
+            right: 5%;
+            font-size: 2.8rem;
+            color: #A67B5B;
+            cursor: pointer;
+            display: none;
+        }
+
+        .navbar a:hover{
+            color: #6F4E37;
+        }
+
+        /*  Our Menu */
+        .part2{
+            margin-top: 12%;
+        }
+
+        .contain2 h2{
+            margin: 20px;
+            text-align: center;
+            border-bottom: 1px solid black;
+        }
+
+        .container{
+            display: flex;   
+            max-width: 1200px;
+            flex-wrap: wrap;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #FED8B1;
+        }
+
+        .section{
+            position: relative;
+            border: 1px solid black;
+            padding: 20px;
+            box-sizing: border-box;
+            margin: 10px;
+            background: #A67B5B;
+        }
+        .section .habibi{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ECB176;
+            padding: 5px 10px;
+            border: 1px solid black;
+            margin-bottom: 20px;
+        }
+
+        /* Our Menu End */
+
+        @media (max-width: 1149px){
+            .header{
+                padding: 1.3rem 5%;
+            }
+            h1{
+                font-size: 40px;
+            }
+            .section{
+                width: 30%;
+            }
+            .part2{
+                margin-top: 20%;
+            }
+        }
+
+        @media (max-width: 1148px) and (min-width: 922px){
+            h1{
+                font-size: 30px;
+            }
+            .section{
+                width: 45%;
+            }
+            .section:nth-child(3){
+                width: 92%;
+            }
+            .part2{
+                margin-top: 25%;
+            }
+        }
+
+        @media (max-width: 921px){
+            .icons{
+                display: inline-flex;
+            }
+
+            #check:checked~.icons #menu-icon{
+                display: none;
+            }
+
+            .icons #close-icon{
+                display: none;
+            }
+
+            #check:checked~.icons #close-icon{
+                display: block;
+            }
+
+            .navbar{
+                position: absolute;
+                display: none;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                height: 0;
+                background: rgba(0, 0, 0, .1);
+                backdrop-filter: blur(4px);
+                box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+                transition: .3s ease;
+            }
+
+            #check:checked~.navbar{
+                height: 17.7rem;
+                display: block;
+                transition: .3s ease;
+            }
+
+            .navbar a{
+                display: block;
+                font-size: 1.1rem;
+                margin: 1.5rem 0;
+                text-align: center;
+                font-weight: bolder;
+                text-transform: uppercase;
+                color: aliceblue;
+            }
+
+            #check:checked~.navbar{
+                transform: translateY(0);
+                opacity: 1;
+                transition-delay: calc(.15s * var(--i));
+            }
+
+            h1{
+                font-size: 24px;
+                margin-right: 30%;
+                justify-content: center;
+
+            }
+            .section{
+                width: 100%;
+            }
+        }
+        @media (max-width: 805px){
+            .part2{
+                margin-top: 40%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img src="img/Moments.png" class="logo"></img>
+        <h1>Moments Cafe</h1>
+        
+        <input type="checkbox" id="check">
+        <label for="check" class="icons">
+            <i class='bx bx-menu' id="menu-icon"></i>
+            <i class='bx bx-x' id="close-icon"></i>
+        </label>
+
+        <nav class="navbar">
+            <a href="index2.html">Home</a>
+            <a href="#">Chicken</a>
+            <a href="#">Beef</a>
+            <a href="#">Sushi</a>
+        </nav>
+    </header>
+    <div class="part2">
+        <div class="contain2">
+            <h2>Our Menu</h2>
+        </div>
+        <div class="container">
+            <section class="section">
+                <div class="habibi">Chicken</div>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi dolor eligendi rem temporibus, adipisci culpa explicabo neque repudiandae enim iste cumque laborum sed fuga.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, quis modi nihil illum beatae ad obcaecati, distinctio nemo illo repellendus ducimus.
+                    </p>
+            </section>
+
+            <section class="section">    
+                <div class="habibi">Beef</div>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi dolor eligendi rem temporibus, adipisci culpa explicabo neque repudiandae enim iste cumque laborum sed fuga.
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex obcaecati tenetur, asperiores optio cum possimus est amet maiores! Natus, veniam provident.
+                    </p>
+            </section>
+
+            <section class="section">
+                <div class="habibi">Sushi</div>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi dolor eligendi rem temporibus, adipisci culpa explicabo neque repudiandae enim iste cumque laborum sed fuga.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat repudiandae obcaecati ut ratione, temporibus quas officiis numquam ullam dignissimos. Tenetur, pariatur?
+                    </p>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
